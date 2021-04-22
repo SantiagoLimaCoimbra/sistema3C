@@ -1,0 +1,56 @@
+.container-principal{
+    margin-top: 24px;
+}
+
+.card{
+    margin-bottom: 16px;
+}
+
+footer{
+    background-color: blueviolet;
+    color: aqua;
+    text-align: center;
+    padding: 32px;
+    margin-top: 24px;
+}
+
+ul{
+    margin-bottom: 0;
+}
+
+li{
+    list-style-type: none;
+}
+
+.container-header-funcionario{
+    margin-top: 24px;
+    margin-bottom: 24px;
+    background-color: blueviolet;
+    color: aqua;
+    text-align: center;
+    padding: 32px;
+    border-radius: 15px;
+}
+
+.container-funcionario{
+    border: 1px solid blueviolet;
+    border-radius: 15px;
+    padding: 16px;
+}
+
+.td-controle{
+    width: 90px;
+}
+
+.container-btn-novo{
+    width: 100%;
+    text-align: right;
+    margin-bottom: 8px;
+}
+
+.container-form-funcionario{
+    border: 1px solid blueviolet;
+    border-radius: 15px;
+    padding: 16px;
+    width: 60%;
+}
