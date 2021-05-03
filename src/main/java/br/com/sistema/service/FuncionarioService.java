@@ -6,6 +6,15 @@ import java.util.List;
 
 public interface FuncionarioService {
 
+    //metodo de consulta
     public List<Funcionario> findAll();
     public Funcionario findById(Long id);
+
+    //metodo de erro/alerta
+    public Funcionario findByEmail(String email);
+    public Funcionario findByNome(String nome);
+
+    //metodo de salvar e deletar
+    public boolean save(Funcionario funcionario);
+    public boolean delete(Long id);
 }
