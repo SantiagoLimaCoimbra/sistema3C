@@ -6,4 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
     public Funcionario findByEmail(String email);
     public Funcionario findByNome(String nome);
+
+    public Funcionario findByIdNotAndEmail(Long id, String email);
+    public Funcionario findByIdNotAndNome(Long id, String nome);
 }

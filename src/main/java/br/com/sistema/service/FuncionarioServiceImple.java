@@ -21,7 +21,7 @@ public class FuncionarioServiceImple implements FuncionarioService{
 
     @Override
     public Funcionario findById(Long id) {
-        return null;
+        return funcionarioRepository.findById(id).get();
     }
 
     @Override
@@ -51,5 +51,40 @@ public class FuncionarioServiceImple implements FuncionarioService{
     @Override
     public boolean delete(Long id){
         return false;
+    }
+
+    @Override
+    public String validarFuncionario(Funcionario funcionario){
+        String erro = null;
+        Funcionario f;
+
+        if(funcionario.getId() == null){//Novo Funcionario
+
+            f = funcionarioRepository.findByNome(funcionario.getNome());
+            if(f != null){
+                erro = "Nome já existente!";
+            }
+
+            f = funcionarioRepository.findByEmail(funcionario.getEmail());
+            if(f != null){
+                if(erro != null) erro += " ";
+                erro = "Email já existente!";
+            }
+
+        } else {//Funcionario Existente
+
+            f = funcionarioRepository.findByIdNotAndNome(funcionario.getId(), funcionario.getNome());
+            if(f != null){
+                erro = " Nome já existente!";
+            }
+
+            f = funcionarioRepository.findByIdNotAndEmail(funcionario.getId(), funcionario.getEmail());
+            if(f != null){
+                if(erro != null) erro += " ";
+                erro = "Email já existente!";
+            }
+
+        }
+        return erro;
     }
 }
