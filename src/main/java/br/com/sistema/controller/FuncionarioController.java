@@ -52,7 +52,17 @@ public class FuncionarioController {
     public String edit(@PathVariable long id, Model model){
         model.addAttribute("funcionario", funcionarioService.findById(id));
         return "funcionario/edit";
+    }
 
+    @GetMapping("/funcionario/delete/{id}")
+    public String delete(@PathVariable long id){
+
+        if(funcionarioService.deleteById(id)){
+            return "redirect:/funcionario/list";
+        } else {
+            //model.addAttribute("funcioario", funcionario);
+            return "funcionario/list";
+        }
     }
 
 }

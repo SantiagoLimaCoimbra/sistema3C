@@ -48,10 +48,10 @@ public class FuncionarioServiceImple implements FuncionarioService{
         }
     }
 
-    @Override
+    /*@Override
     public boolean delete(Long id){
         return false;
-    }
+    }*/
 
     @Override
     public String validarFuncionario(Funcionario funcionario){
@@ -86,5 +86,14 @@ public class FuncionarioServiceImple implements FuncionarioService{
 
         }
         return erro;
+    }
+
+    public boolean deleteById(Long id){
+        try{
+            funcionarioRepository.deleteById(id);
+            return  true;
+        }catch(Exception e){
+            return false;
+        }
     }
 }

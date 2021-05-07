@@ -17,6 +17,6 @@ public interface FuncionarioService {
 
     //metodo de salvar e deletar
     public boolean save(Funcionario funcionario);
-    public boolean delete(Long id);
+    public boolean deleteById(Long id);
 
 }
