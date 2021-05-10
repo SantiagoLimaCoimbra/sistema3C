@@ -7,24 +7,16 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity(name = "funcionario")
-public class Funcionario {
+@Entity(name = "Cargo")
+public class Cargo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(max=80)
+    @Size(max=50)
     @NotNull
     private String nome;
-
-    @Size(max=100)
-    @NotNull
-    private String email;
-
-    @Size(max=30)
-    @NotNull
-    private String telefone;
 
 
     //GET E SET
@@ -44,27 +36,10 @@ public class Funcionario {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
 
     //TO STRING
     @Override
     public String toString() {
-        return "Nome: " + nome + "; E-mail: " + email +
-                "; Telefone: " + telefone;
+        return "Cargo: " + nome;
     }
 }
