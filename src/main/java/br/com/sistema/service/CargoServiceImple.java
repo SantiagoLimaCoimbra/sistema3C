@@ -1,9 +1,12 @@
 package br.com.sistema.service;
 
 import br.com.sistema.model.Cargo;
+import br.com.sistema.model.Funcionario;
 import br.com.sistema.repository.CargoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -14,7 +17,7 @@ public class CargoServiceImple implements CargoService{
     CargoRepository cargoRepository;
 
     @Override
-    public Cargo findById(long id) {
+    public Cargo findById(Long id) {
         return cargoRepository.findById(id).get();
     }
 
@@ -29,12 +32,54 @@ public class CargoServiceImple implements CargoService{
     }
 
     @Override
-    public String save(Cargo cargo) {
-        return null;
+    public String validarCargo(Cargo cargo){
+        String error = null;
+        Cargo c;
+
+        if(cargo.getId() == null){//Novo Cargo
+
+            c = cargoRepository.findByNome(cargo.getNome());
+            if(c != null){
+                error = "Cargo já existente!";
+            }
+
+        } else {//Cargo Existente
+
+            c = cargoRepository.findByIdNotAndNome(cargo.getId(), cargo.getNome());
+            if(c != null){
+                error = " Nome já existente!";
+            }
+        }
+        return error;
     }
 
     @Override
-    public String deleteById() {
-        return null;
+    public boolean save(Cargo cargo){
+        try{
+            if (cargo != null){
+                cargoRepository.save(cargo);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e){
+            System.out.println("Erro ao salvar o cargo: " + e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean deleteById(Long id) {
+       try {
+           if(id != null || id > 0){
+               cargoRepository.deleteById(id);
+               return true;
+           } else {
+               return false;
+           }
+       } catch (Exception e){
+           System.out.println("Erro ao deletar o cargo" + e.getMessage());
+           return false;
+       }
     }
 }
