@@ -1,9 +1,6 @@
 package br.com.sistema.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -25,6 +22,10 @@ public class Funcionario {
     @Size(max=30)
     @NotNull
     private String telefone;
+
+    @OneToOne
+    @JoinColumn(name = "cargo_id", referencedColumnName = "id")
+    private Cargo cargo;
 
 
     //GET E SET
@@ -60,6 +61,13 @@ public class Funcionario {
         this.telefone = telefone;
     }
 
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo caego) {
+        this.cargo = caego;
+    }
 
     //TO STRING
     @Override

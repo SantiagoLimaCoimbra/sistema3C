@@ -40,6 +40,6 @@ public class Cargo {
     //TO STRING
     @Override
     public String toString() {
-        return "Cargo: " + nome;
+        return nome;
     }
 }
